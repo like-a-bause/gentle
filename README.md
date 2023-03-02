@@ -1,10 +1,10 @@
-# gentle - oppinionated kind cluster creation
+# gentle and kind - local k8s cluster bootstrapper
 Installs and bootstraps a kind cluster on Mac OSX with some features:
 
 * nginx-ingress
 * .test Top-Level-Domain resolution on host system
 * TLS certificates with cert-manager
-* monitoring stack
+* monitoring stack (prometheus and loki)
 * postgresql installed with port-forward
 
 ## Prerequisites
@@ -15,8 +15,8 @@ Run `./gentle bootstrap` to install the cluster.
 If all runs well you have to do two additional steps:
 
 ### Import the cert
-Double click the infra/cert-manager/tls.crt file to add the certificate to the keychain. 
-Then find the certificate (gentle-ca) in the "Keychain Access" app, right click the entry and choose 
+Double click the tls.crt file to add the certificate to the keychain.
+Then find the certificate (**Gentle Certificate Authority**) in the "Keychain Access" app, right click the entry and choose 
 "Get Info" to open the dialog (or double click the entry instead). 
 Expand the "Trust" section and set "Secure Sockets Layer (SSL)" to "Always trust".
 

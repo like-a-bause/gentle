@@ -33,15 +33,15 @@ pub async fn install_cert_manager() -> Result<()> {
 }
 
 pub async fn generate_certificate_authority(client: Client) -> Result<()> {
-    let ca_path = "./infra/cert-manager/tls.crt";
-    let private_key_path = "./infra/cert-manager/tls.key";
+    let ca_path = "tls.crt";
+    let private_key_path = "tls.key";
 
     let private_key;
     let pem;
 
     if !std::path::Path::new(ca_path).exists() {
         info!("Generating Cert...");
-        let alt_names = vec![String::from("Gentle CA")];
+        let alt_names = vec![String::from("Gentle Certificate Authority")];
         let mut params = rcgen::CertificateParams::new(alt_names);
         params.is_ca = rcgen::IsCa::Ca(rcgen::BasicConstraints::Unconstrained);
         let mut dn = DistinguishedName::new();
