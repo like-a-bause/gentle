@@ -1,0 +1,3 @@
+resources:
+  - ca-issuer.yaml
+  - default-certificate-wildcard.yaml

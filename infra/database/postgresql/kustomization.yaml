@@ -1,0 +1,9 @@
+resources:
+  - deployment.yaml
+  - service.yaml
+  - service-host.yaml
+  - persistent-volume.yaml
+configMapGenerator:
+  - name: initdb
+    files:
+      - initdbscript.sh

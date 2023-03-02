@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: default-certificate-wildcard
+  namespace: ingress-nginx
+spec:
+  dnsNames:
+    - '*.test'
+    - '*.hanko.test'
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod
+  secretName: default-certificate-wildcard
+  usages:
+    - server auth

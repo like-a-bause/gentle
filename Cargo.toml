@@ -1,0 +1,20 @@
+[package]
+name = "gentle"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.69"
+clap = { version = "4.1.4", features = ["derive"] }
+k8s-openapi = { version = "0.17.0", features = ["v1_22"] }
+kube = "0.78.0"
+rcgen = "0.10.0"
+serde = "1.0.152"
+serde_json = "1.0.93"
+serde_yaml = "0.9.17"
+tokio = { version = "1.25.0", features = ["full"] }
+tracing = "0.1.37"
+tracing-subscriber = "0.3.16"
+which = "4.4.0"

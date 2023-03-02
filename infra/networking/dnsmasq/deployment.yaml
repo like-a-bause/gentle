@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dnsmasq
+spec:
+  selector:
+    matchLabels:
+      app: dnsmasq
+  template:
+    metadata:
+      labels:
+        app: dnsmasq
+      name: dnsmasq
+    spec:
+      containers:
+        - name: dnsmasq
+          image: strm/dnsmasq
+          ports:
+            - containerPort: 53
+              hostPort: 53
+              name: dns
+              protocol: UDP
+          volumeMounts:
+            - mountPath: /etc/dnsmasq.conf
+              name: config
+              subPath: dnsmasq.conf
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+      volumes:
+        - name: config
+          configMap:
+            name: config
