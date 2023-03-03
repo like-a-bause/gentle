@@ -10,7 +10,6 @@ pub async fn install_monitoring_stack(client: Client) -> Result<()> {
     // 1. create monitoring namespaces via kube-rs
     let ns: Api<Namespace> = Api::all(client);
 
-    info!("Creating Namespace monitoring");
     let namespace = Namespace {
         metadata: ObjectMeta {
             name: Some(String::from("monitoring")),

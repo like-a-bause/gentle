@@ -25,3 +25,10 @@ Run
 ```
 sudo bash -c 'mkdir -p /etc/resolver && echo "nameserver 127.0.0.1" > /etc/resolver/test'
 ```
+
+## Usage
+If everything checks green you should be able to go to `https://monitoring.test` and log into grafana with the default credentials:
+```
+user: admin
+password: prom-operator
+```

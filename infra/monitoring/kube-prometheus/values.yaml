@@ -22,6 +22,10 @@ grafana:
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     hosts:
       - monitoring.test
+    tls:
+      - secretName: monitoring-test-tls
+        hosts:
+          - monitoring.test
 kube-state-metrics:
   extraArgs:
     - --metric-labels-allowlist=nodes=[*],pods=[*],persistentvolumeclaims=[*],deployments=[*],statefulsets=[*],configmaps=[*],secrets=[*],services=[*],replicasets=[*]

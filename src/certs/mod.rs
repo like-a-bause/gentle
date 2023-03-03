@@ -82,6 +82,7 @@ pub async fn generate_certificate_authority(client: Client) -> Result<()> {
     let api: Api<Secret> = Api::namespaced(client,"cert-manager");
     api.patch("ca-key-pair", &PatchParams::apply("gentle"),&Patch::Apply(ca_secret)).await?;
 
+    info!("Creating Cluster Issuer and Wildcard Certificate");
     utils::apply_kustomization("./infra/cert-manager")?;
 
     Ok(())

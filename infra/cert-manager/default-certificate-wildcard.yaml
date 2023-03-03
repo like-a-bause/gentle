@@ -5,11 +5,11 @@ metadata:
   namespace: ingress-nginx
 spec:
   dnsNames:
-    - '*.test'
-    - '*.hanko.test'
+    - '*.gentle.test'
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-prod
   secretName: default-certificate-wildcard
   usages:
     - server auth
+  commonName: '*.gentle..test'
