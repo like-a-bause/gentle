@@ -23,6 +23,13 @@ jobs:
     - uses: actions/checkout@v3
     - name: Install required target
       run: rustup target add ${{ matrix.target }}
+    - name: aarch64-specific items
+      run: |
+        # Settings taken from: https://github.com/rust-lang/rustup/blob/master/.github/workflows/macos-builds-on-all.yaml
+        # Use nightly for now
+        rustup toolchain install --profile=minimal nightly
+        rustup default nightly
+        if: matrix.target == 'aarch64-apple-darwin'
     - name: Build
       run: cargo build --verbose --release --target=${{ matrix.target }}
     - name: Run tests
