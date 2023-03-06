@@ -11,12 +11,24 @@ env:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    name: Build
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        target:
+          - x86_64-apple-darwin
+          - aarch64-apple-darwin
 
     steps:
     - uses: actions/checkout@v3
+    - name: Install required target
+      run: rustup target add { matrix.target}
     - name: Build
-      run: cargo build --verbose
+      run: cargo build --verbose --release --target={ matrix.target }
     - name: Run tests
       run: cargo test --verbose
+    - name: Artifact upload
+      uses: actions/upload-artifact@v3
+      with:
+        name: Build MacOS
+        path: ./target/{ matrix.target }/release/gentle
