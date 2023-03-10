@@ -35,7 +35,7 @@ jobs:
     - name: create artifact folder
       run: mkdir artifact
     - name: Copy yamls
-      run: cp -r infra artifacts/infra
+      run: cp -r infra artifacts/
     - name: Copy binary
       run: cp ./target/${{ matrix.target }}/release/gentle artifacts/gentle
     - name: Artifact upload
