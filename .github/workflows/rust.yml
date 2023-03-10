@@ -33,7 +33,7 @@ jobs:
     - name: Run tests
       run: cargo test --verbose
     - name: create artifact folder
-      run: mkdir artifact
+      run: mkdir artifacts
     - name: Copy yamls
       run: cp -r infra artifacts/
     - name: Copy binary
