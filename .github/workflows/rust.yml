@@ -32,8 +32,14 @@ jobs:
       run: cargo build --verbose --release --target=${{ matrix.target }}
     - name: Run tests
       run: cargo test --verbose
+    - name: create artifact folder
+      run: mkdir artifact
+    - name: Copy yamls
+      run: cp -r infra artifacts/infra
+    - name: Copy binary
+      run: cp ./target/${{ matrix.target }}/release/gentle artifacts/gentle
     - name: Artifact upload
       uses: actions/upload-artifact@v3
       with:
-        name: Build MacOS
-        path: ./target/${{ matrix.target }}/release/gentle
+        name: gentle-${{ matrix.target }}
+        path: artifacts

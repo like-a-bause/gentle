@@ -9,7 +9,7 @@ pub async fn create_cluster() -> Result<()> {
         "create",
         "cluster",
         "--config",
-        "kind-config.yaml"]);
+        "./infra/kind-config.yaml"]);
     match create {
         Ok(_) => {
             info!("Cluster created.");
