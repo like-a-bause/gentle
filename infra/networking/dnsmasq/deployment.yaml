@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: dnsmasq
 spec:
+  strategy:
+    # There is only one port available we have to kill old pods first
+    type: Recreate
   selector:
     matchLabels:
       app: dnsmasq
